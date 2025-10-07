@@ -1,0 +1,212 @@
+/* Main CSS File - Combines all styles */
+
+/* Import all CSS files in correct order */
+@import url('base/variables.css');
+@import url('base/reset.css');
+@import url('base/typography.css');
+@import url('base/layout.css');
+
+@import url('components/navbar.css');
+@import url('components/hero.css');
+@import url('components/buttons.css');
+@import url('components/cards.css');
+@import url('components/forms.css');
+@import url('components/sections.css');
+@import url('components/alerts.css');
+@import url('components/footer.css');
+
+/* Additional Global Styles */
+
+/* Use primary colors for interactive elements */
+a {
+  color: var(--primary-700);
+  transition: color var(--transition-normal);
+}
+
+a:hover {
+  color: var(--primary-900);
+}
+
+/* Ensure all headings use proper color */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-900);  /* Dark blue for all headings */
+}
+
+/* Body text should be dark gray */
+p, li, span {
+  color: var(--gray-700);
+}
+
+/* Secondary text */
+.text-secondary {
+  color: var(--gray-500);
+}
+
+/* Make sure buttons have good contrast */
+.btn-primary {
+  background: var(--primary-700);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-900);
+}
+
+/* Platform cards with better contrast */
+.platform-card h3 {
+  color: var(--primary-900);
+}
+
+.platform-card p {
+  color: var(--gray-600);
+}
+
+/* FAQ text colors */
+.faq-question {
+  color: var(--primary-900);
+}
+
+.faq-answer {
+  color: var(--gray-700);
+}
+
+/* Footer adjustments for readability */
+.footer {
+  background: var(--primary-900);  /* Dark blue background */
+}
+
+.footer h3 {
+  color: var(--background-100);
+}
+
+.footer a {
+  color: var(--primary-100);
+  opacity: 0.9;
+}
+
+.footer a:hover {
+  color: var(--white);
+  opacity: 1;
+}
+
+.copyright {
+  color: var(--primary-300);
+}
+
+/* Input field adjustments */
+.url-input {
+  color: var(--gray-700);
+  background: var(--white);
+  border: 2px solid var(--primary-300);
+}
+
+.url-input::placeholder {
+  color: var(--gray-500);
+}
+
+.url-input:focus {
+  border-color: var(--primary-700);
+}
+
+/* Alert text colors */
+.alert-success {
+  background: var(--success);
+  color: var(--white);
+}
+
+.alert-error {
+  background: var(--error);
+  color: var(--white);
+}
+
+/* Step numbers with better visibility */
+.step-number {
+  background: var(--primary-700);
+  color: var(--white);
+}
+
+/* Section titles and subtitles */
+.section-title {
+  color: var(--primary-900);
+}
+
+.section-subtitle {
+  color: var(--gray-600);
+}
+
+/* Navigation improvements */
+.logo {
+  color: var(--primary-900);
+  font-weight: var(--font-bold);
+}
+
+.nav-link {
+  color: var(--gray-700);
+}
+
+.nav-link:hover {
+  color: var(--primary-700);
+}
+
+/* Mobile menu */
+.menu-toggle {
+  color: var(--primary-900);
+}
+
+/* Trust badges */
+.trust-badge {
+  color: var(--gray-700);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--primary-100);
+}
+
+.check-icon {
+  color: var(--success);
+  font-weight: bold;
+}
+
+/* Feature cards */
+.feature-card {
+  background: var(--white);
+  border: 2px solid var(--primary-100);
+}
+
+.feature-card:hover {
+  border-color: var(--primary-500);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  color: var(--primary-700);
+}
+
+.feature-card h3 {
+  color: var(--primary-900);
+}
+
+.feature-card p {
+  color: var(--gray-600);
+}
+
+/* Platform cards enhanced */
+.platform-card {
+  background: var(--white);
+  border: 2px solid var(--primary-100);
+}
+
+.platform-card:hover {
+  border-color: var(--primary-500);
+  background: var(--background-100);
+}
+
+.platform-icon {
+  color: var(--primary-700);
+  font-size: 2.5rem;
+}
+
+/* Form elements */
+.form-text {
+  color: var(--gray-600);
+  font-size: var(--text-sm);
+}

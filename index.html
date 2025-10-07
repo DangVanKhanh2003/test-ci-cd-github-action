@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tải video từ YouTube, Facebook, Instagram, TikTok, X và nhiều nền tảng khác. Miễn phí, nhanh chóng và an toàn.">
+    <title>SnackLoader - Tải Video Miễn Phí</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="#home">
+                <span class="text-gradient">SnackLoader</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#youtube">YouTube</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#facebook">Facebook</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#instagram">Instagram</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tiktok">TikTok</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#twitter">X(Twitter)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pinterest">Pinterest</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-primary py-5" id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="display-4 fw-bold mb-4 text-gradient-hero">Tải Video Chất Lượng Cao</h1>
+                    <p class="lead mb-5 text-white">Tải video từ YouTube, Facebook, Instagram, TikTok và nhiều nền tảng khác</p>
+
+                    <form id="downloadForm" class="mb-4">
+                        <div class="new-search-wrapper">
+                            <div class="input-container">
+                                <i class="bi bi-link-45deg input-icon"></i>
+                                <input
+                                    type="url"
+                                    class="new-input"
+                                    id="urlInput"
+                                    placeholder="Paste video link here (YouTube, Facebook, Instagram, TikTok, Twitter...)"
+                                    required
+                                >
+                                <button class="new-download-btn" type="submit">
+                                    <i class="bi bi-download me-2"></i>
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                <!-- Format Selector (hidden by default) -->
+                <div class="format-selector-wrapper" id="formatSelector" style="display: none;">
+                    <div class="format-selector-container">
+                        <!-- Video Info -->
+                        <div class="video-info-box">
+                            <img src="https://via.placeholder.com/200x150" alt="Video thumbnail" class="video-thumbnail" id="videoThumb">
+                            <h5 class="video-title-text" id="videoTitleText">Video Title</h5>
+                        </div>
+
+                        <!-- Format Options -->
+                        <div class="format-options-box">
+                            <!-- Tabs -->
+                            <div class="format-tabs">
+                                <button class="format-tab active" data-tab="video">
+                                    <i class="bi bi-camera-video me-2"></i>Video
+                                </button>
+                                <button class="format-tab" data-tab="audio">
+                                    <i class="bi bi-volume-up me-2"></i>Audio
+                                </button>
+                            </div>
+
+                            <!-- Video Formats -->
+                            <div class="format-list" id="videoFormats">
+                                <div class="format-item">
+                                    <span class="format-type">MP4</span>
+                                    <span class="format-quality">auto</span>
+                                    <button class="btn-convert">Convert</button>
+                                </div>
+                                <div class="format-item">
+                                    <span class="format-type">MP4</span>
+                                    <span class="format-quality">144p</span>
+                                    <button class="btn-convert">Convert</button>
+                                </div>
+                                <div class="format-item">
+                                    <span class="format-type">3GP</span>
+                                    <span class="format-quality">144p</span>
+                                    <button class="btn-convert">Convert</button>
+                                </div>
+                                <div class="format-item">
+                                    <span class="format-type">MP4</span>
+                                    <span class="format-quality">360P</span>
+                                    <button class="btn-convert">Convert</button>
+                                </div>
+                                <div class="format-item">
+                                    <span class="format-type">MP4</span>
+                                    <span class="format-quality">480P</span>
+                                    <button class="btn-convert">Convert</button>
+                                </div>
+                                <div class="format-item">
+                                    <span class="format-type">MP4</span>
+                                    <span class="format-quality">720p <span class="badge-hd">HD</span></span>
+                                    <button class="btn-convert">Convert</button>
+                                </div>
+                                <div class="format-item">
+                                    <span class="format-type">MP4</span>
+                                    <span class="format-quality">1080P <span class="badge-hd">Full-HD</span></span>
+                                    <button class="btn-convert">Convert</button>
+                                </div>
+                            </div>
+
+                            <!-- Audio Formats (hidden by default) -->
+                            <div class="format-list" id="audioFormats" style="display: none;">
+                                <div class="format-item">
+                                    <span class="format-type">MP3</span>
+                                    <span class="format-quality">128kbps</span>
+                                    <button class="btn-convert">Convert</button>
+                                </div>
+                                <div class="format-item">
+                                    <span class="format-type">MP3</span>
+                                    <span class="format-quality">192kbps</span>
+                                    <button class="btn-convert">Convert</button>
+                                </div>
+                                <div class="format-item">
+                                    <span class="format-type">MP3</span>
+                                    <span class="format-quality">320kbps <span class="badge-hd">HQ</span></span>
+                                    <button class="btn-convert">Convert</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar (hidden by default) -->
+                <div class="progress-container" id="progressContainer" style="display: none;">
+                    <div class="progress-info">
+                        <span class="progress-text">Đang xử lý...</span>
+                        <span class="progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <!-- Video Preview Card (hidden by default) -->
+                <div class="video-preview" id="videoPreview" style="display: none;">
+                    <div class="video-preview-header">
+                        <div class="video-thumbnail">
+                            <img src="" alt="Video thumbnail" id="videoThumbnail">
+                            <div class="video-duration">00:00</div>
+                        </div>
+                        <div class="video-info">
+                            <h4 class="video-title" id="videoTitle">Video Title</h4>
+                            <p class="video-meta">
+                                <span id="videoAuthor">Channel Name</span> •
+                                <span id="videoViews">1.2M views</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="video-actions">
+                        <button class="btn btn-primary download-btn">
+                            <span>⬇</span> Tải xuống
+                        </button>
+                        <button class="btn-secondary reset-btn">Tải video khác</button>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="row g-4 mt-5">
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card text-center">
+                            <i class="bi bi-download fs-1 mb-3 d-block"></i>
+                            <div class="stat-number mb-2" data-target="2000000">0</div>
+                            <div class="stat-label">Video đã tải</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card text-center">
+                            <i class="bi bi-people-fill fs-1 mb-3 d-block"></i>
+                            <div class="stat-number mb-2" data-target="500000">0</div>
+                            <div class="stat-label">Người dùng</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card text-center">
+                            <i class="bi bi-globe fs-1 mb-3 d-block"></i>
+                            <div class="stat-number mb-2" data-target="8">0</div>
+                            <div class="stat-label">Nền tảng</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card text-center">
+                            <i class="bi bi-star-fill fs-1 mb-3 d-block"></i>
+                            <div class="stat-number mb-2" data-target="99">0</div>
+                            <div class="stat-label">Hài lòng</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="py-5 bg-white" id="features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Tính năng nổi bật</h2>
+                <p class="text-muted">Những lý do bạn nên chọn SnackLoader</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon-circle feature-icon-purple mb-3 mx-auto">
+                                <i class="bi bi-rocket-takeoff-fill text-white fs-2"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Tải cực nhanh</h5>
+                            <p class="card-text text-muted">Tốc độ tải xuống vượt trội, tiết kiệm thời gian</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon-circle feature-icon-purple mb-3 mx-auto">
+                                <i class="bi bi-collection-play-fill text-white fs-2"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Nhiều định dạng</h5>
+                            <p class="card-text text-muted">Hỗ trợ MP4, MP3, WEBM và nhiều định dạng khác</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon-circle feature-icon-purple mb-3 mx-auto">
+                                <i class="bi bi-shield-check-fill text-white fs-2"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Bảo mật cao</h5>
+                            <p class="card-text text-muted">Không lưu trữ dữ liệu, bảo vệ quyền riêng tư</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon-circle feature-icon-purple mb-3 mx-auto">
+                                <i class="bi bi-phone-landscape-fill text-white fs-2"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Mọi thiết bị</h5>
+                            <p class="card-text text-muted">Hoạt động mượt mà trên mọi thiết bị</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon-circle feature-icon-purple mb-3 mx-auto">
+                                <i class="bi bi-stars-fill text-white fs-2"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Chất lượng cao</h5>
+                            <p class="card-text text-muted">Tải video lên đến 4K, 8K chất lượng gốc</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon-circle feature-icon-purple mb-3 mx-auto">
+                                <i class="bi bi-gift-fill text-white fs-2"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Miễn phí 100%</h5>
+                            <p class="card-text text-muted">Không giới hạn, không có phí ẩn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section class="py-5 section-platforms" id="platforms">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Các nền tảng hỗ trợ</h2>
+                <p class="text-muted">Tải video từ mọi nền tảng phổ biến</p>
+            </div>
+            <div class="row g-3">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center h-100 hover-scale">
+                        <div class="card-body">
+                            <i class="bi bi-youtube text-danger fs-1 mb-2"></i>
+                            <h6 class="fw-bold mb-1">YouTube</h6>
+                            <small class="text-muted">Video & Audio HD</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center h-100 hover-scale">
+                        <div class="card-body">
+                            <i class="bi bi-tiktok text-dark fs-1 mb-2"></i>
+                            <h6 class="fw-bold mb-1">TikTok</h6>
+                            <small class="text-muted">No watermark</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center h-100 hover-scale">
+                        <div class="card-body">
+                            <i class="bi bi-facebook text-primary fs-1 mb-2"></i>
+                            <h6 class="fw-bold mb-1">Facebook</h6>
+                            <small class="text-muted">Video & Reels</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center h-100 hover-scale">
+                        <div class="card-body">
+                            <i class="bi bi-instagram text-danger fs-1 mb-2"></i>
+                            <h6 class="fw-bold mb-1">Instagram</h6>
+                            <small class="text-muted">Posts & Stories</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center h-100 hover-scale">
+                        <div class="card-body">
+                            <i class="bi bi-threads text-dark fs-1 mb-2"></i>
+                            <h6 class="fw-bold mb-1">Threads</h6>
+                            <small class="text-muted">Video posts</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center h-100 hover-scale">
+                        <div class="card-body">
+                            <i class="bi bi-twitter-x text-dark fs-1 mb-2"></i>
+                            <h6 class="fw-bold mb-1">X (Twitter)</h6>
+                            <small class="text-muted">Video & GIFs</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center h-100 hover-scale">
+                        <div class="card-body">
+                            <i class="bi bi-pinterest text-danger fs-1 mb-2"></i>
+                            <h6 class="fw-bold mb-1">Pinterest</h6>
+                            <small class="text-muted">Video pins</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center h-100 hover-scale">
+                        <div class="card-body">
+                            <i class="bi bi-reddit text-danger fs-1 mb-2"></i>
+                            <h6 class="fw-bold mb-1">Reddit</h6>
+                            <small class="text-muted">Video posts</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- How To Section -->
+    <section class="py-5 section-how-to" id="how-to">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Cách sử dụng</h2>
+                <p class="text-muted">3 bước đơn giản để tải video</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 text-center hover-lift">
+                        <div class="card-body p-4">
+                            <div class="step-badge mb-3">
+                                <i class="bi bi-link-45deg"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">Sao chép link</h5>
+                            <p class="card-text text-muted">Sao chép URL video từ nền tảng bất kỳ (YouTube, TikTok, Facebook...)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 text-center hover-lift">
+                        <div class="card-body p-4">
+                            <div class="step-badge mb-3">
+                                <i class="bi bi-clipboard-check"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">Dán vào ô</h5>
+                            <p class="card-text text-muted">Dán link vào ô nhập liệu phía trên và chọn chất lượng mong muốn</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 text-center hover-lift">
+                        <div class="card-body p-4">
+                            <div class="step-badge mb-3">
+                                <i class="bi bi-download"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">Tải xuống</h5>
+                            <p class="card-text text-muted">Nhấn nút tải và chờ video được xử lý. Hoàn tất!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 section-testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Người dùng nói gì</h2>
+                <p class="text-muted">Đánh giá từ người dùng thực tế</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="card-text fst-italic mb-4">"Nhanh và dễ sử dụng! Tôi đã thử nhiều công cụ nhưng đây là tốt nhất. Chất lượng video tuyệt vời."</p>
+                            <div class="d-flex align-items-center">
+                                <div class="testimonial-avatar me-3">
+                                    <i class="bi bi-person-fill fs-5"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Minh Anh</div>
+                                    <small class="text-muted">Content Creator</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="card-text fst-italic mb-4">"Mình thích nhất là tải được video TikTok không watermark. Siêu tiện lợi cho việc làm video."</p>
+                            <div class="d-flex align-items-center">
+                                <div class="testimonial-avatar me-3">
+                                    <i class="bi bi-person-fill fs-5"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Tuấn Việt</div>
+                                    <small class="text-muted">Video Editor</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="card-text fst-italic mb-4">"Không cần đăng ký, không quảng cáo phiền phức. Đơn giản và hiệu quả. Tôi recommend 100%!"</p>
+                            <div class="d-flex align-items-center">
+                                <div class="testimonial-avatar me-3">
+                                    <i class="bi bi-person-fill fs-5"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Hương Ly</div>
+                                    <small class="text-muted">Student</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="card-text fst-italic mb-4">"Tốc độ tải cực nhanh, hỗ trợ đầy đủ các nền tảng. Tôi dùng để lưu lại các video học tập rất tiện."</p>
+                            <div class="d-flex align-items-center">
+                                <div class="testimonial-avatar me-3">
+                                    <i class="bi bi-person-fill fs-5"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Đức Anh</div>
+                                    <small class="text-muted">Marketing Manager</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="card-text fst-italic mb-4">"Tải video Instagram và Facebook rất mượt. Giao diện đẹp, dễ nhìn. Tôi đã giới thiệu cho nhiều bạn bè."</p>
+                            <div class="d-flex align-items-center">
+                                <div class="testimonial-avatar me-3">
+                                    <i class="bi bi-person-fill fs-5"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Thu Hà</div>
+                                    <small class="text-muted">Photographer</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="card-text fst-italic mb-4">"Hoàn toàn miễn phí mà chất lượng tuyệt vời. Tải video 4K vẫn giữ được chất lượng gốc. Tuyệt vời!"</p>
+                            <div class="d-flex align-items-center">
+                                <div class="testimonial-avatar me-3">
+                                    <i class="bi bi-person-fill fs-5"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Phương Nam</div>
+                                    <small class="text-muted">YouTuber</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="card-text fst-italic mb-4">"Giao diện rất thân thiện, không phức tạp. Mẹ tôi 60 tuổi cũng dùng được. Cảm ơn team!"</p>
+                            <div class="d-flex align-items-center">
+                                <div class="testimonial-avatar me-3">
+                                    <i class="bi bi-person-fill fs-5"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Bảo Trân</div>
+                                    <small class="text-muted">Teacher</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="card-text fst-italic mb-4">"Tốt nhất là hỗ trợ nhiều định dạng. Tải MP3 từ YouTube cực nhanh. Dùng hằng ngày luôn!"</p>
+                            <div class="d-flex align-items-center">
+                                <div class="testimonial-avatar me-3">
+                                    <i class="bi bi-person-fill fs-5"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Quang Huy</div>
+                                    <small class="text-muted">DJ / Music Producer</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 section-faq" id="faq">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Câu hỏi thường gặp</h2>
+                <p class="text-muted">Câu trả lời cho những câu hỏi phổ biến</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item border-0 shadow-sm mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Tôi có cần đăng ký tài khoản không?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Không, bạn không cần đăng ký tài khoản để sử dụng dịch vụ của chúng tôi. Chỉ cần dán link video và tải xuống ngay.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 shadow-sm mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Dịch vụ có miễn phí không?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Hoàn toàn miễn phí 100%. Không có phí ẩn, không giới hạn số lượng tải xuống, không cần đăng ký tài khoản premium.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 shadow-sm mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Chất lượng video như thế nào?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Chúng tôi hỗ trợ tải video với chất lượng cao nhất có sẵn từ nguồn, bao gồm 4K, 1080p, 720p và các độ phân giải khác.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 shadow-sm mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Có an toàn không?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    An toàn tuyệt đối. Chúng tôi không lưu trữ thông tin cá nhân, không yêu cầu đăng nhập và tất cả quá trình xử lý đều được mã hóa.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="text-white mb-3">
+                        <i class="bi bi-film me-2"></i>SnackLoader
+                    </h5>
+                    <p class="text-white-50">Công cụ tải video miễn phí, nhanh chóng và an toàn từ mọi nền tảng.</p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="#" class="btn btn-outline-light btn-sm">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="text-white mb-3">Tải MP3</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">YouTube to MP3</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">TikTok to MP3</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Facebook to MP3</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Instagram to MP3</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="text-white mb-3">Tải MP4</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">YouTube to MP4</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">TikTok to MP4</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Facebook to MP4</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Instagram to MP4</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-white mb-3">Thông tin</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Về chúng tôi</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Bảo mật</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Điều khoản</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-white opacity-25">
+            <div class="text-center text-white-50">
+                <small>© 2025 SnackLoader. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

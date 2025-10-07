@@ -1,0 +1,72 @@
+/* Alert Components */
+
+.alert {
+  padding: var(--space-4);
+  margin: var(--space-4) 0;
+  border-radius: var(--radius-sm);
+  display: none;
+}
+
+.alert.show {
+  display: block;
+}
+
+/* Alert Types */
+.alert-success {
+  background: var(--success);
+  color: var(--white);
+}
+
+.alert-error {
+  background: var(--error);
+  color: var(--white);
+}
+
+.alert-warning {
+  background: var(--warning);
+  color: var(--white);
+}
+
+.alert-info {
+  background: var(--primary-500);
+  color: var(--white);
+}
+
+/* Alert Content */
+.alert-title {
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-2);
+}
+
+.alert-message {
+  font-size: var(--text-sm);
+}
+
+/* Alert with Icon */
+.alert-icon {
+  display: inline-block;
+  margin-right: var(--space-2);
+}
+
+/* Dismissible Alert */
+.alert-dismissible {
+  position: relative;
+  padding-right: var(--space-12);
+}
+
+.alert-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: var(--text-xl);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity var(--transition-normal);
+}
+
+.alert-close:hover {
+  opacity: 1;
+}

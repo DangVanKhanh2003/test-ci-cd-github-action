@@ -1,0 +1,86 @@
+/* Button Components */
+
+.btn {
+  padding: 14px 28px;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-normal);
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Primary Button */
+.btn-primary {
+  background: var(--primary-700);
+  color: var(--background-100);
+}
+
+.btn-primary:hover {
+  background: var(--primary-900);
+}
+
+.btn-primary:active {
+  background: var(--primary-700);
+}
+
+.btn-primary:disabled {
+  background: var(--primary-100);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: transparent;
+  color: var(--secondary-700);
+  border: 2px solid var(--secondary-700);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-700);
+  color: var(--background-100);
+}
+
+.btn-secondary:active {
+  background: var(--secondary-900);
+  color: var(--background-100);
+}
+
+.btn-secondary:disabled {
+  background: transparent;
+  color: var(--text-disabled);
+  border-color: var(--secondary-100);
+  cursor: not-allowed;
+}
+
+/* Button Loading State */
+.btn.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: 10px 20px;
+  font-size: var(--text-sm);
+  min-height: 40px;
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: var(--text-lg);
+  min-height: 56px;
+}
+
+/* Responsive Buttons */
+@media (min-width: 640px) {
+  .btn {
+    padding: 16px 32px;
+  }
+}

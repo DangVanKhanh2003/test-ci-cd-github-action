@@ -1,0 +1,629 @@
+/* ================================
+   SnackLoader - Custom Bootstrap CSS
+   Modern & Clean Design System
+   ================================ */
+
+/* ============================
+   COLOR SYSTEM (Strict Palette)
+   ============================ */
+:root {
+    /* Primary Color - Purple (60% usage) */
+    --primary: #8B7EF5;
+    --primary-dark: #6B5DD3;
+    --primary-light: #A99BF7;
+    --primary-lighter: #C7BCFA;
+
+    /* Accent Color - Yellow/Gold (10% usage) */
+    --accent: #FFD166;
+    --accent-dark: #FF9A3C;
+
+    /* Neutral Colors (30% usage) */
+    --text-dark: #1a202c;
+    --text-body: #4a5568;
+    --text-light: #6b7280;
+    --gray-100: #f7fafc;
+    --gray-200: #edf2f7;
+    --gray-300: #e2e8f0;
+
+    /* Backgrounds */
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fe;
+    --bg-lighter: #f0f2ff;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+}
+
+/* ============================
+   TYPOGRAPHY
+   ============================ */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-dark);
+}
+
+/* ============================
+   HERO SECTION
+   ============================ */
+.hero-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--gradient-primary);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.text-gradient-hero {
+    background: linear-gradient(135deg, #ffffff 20%, var(--accent) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 4px 12px rgba(255, 209, 102, 0.5));
+}
+
+.hero-section .lead {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================
+   SEARCH INPUT
+   ============================ */
+.new-search-wrapper {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 100px;
+    padding: 10px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    background: var(--bg-white);
+    border-radius: 100px;
+    padding: 8px 12px;
+    gap: 12px;
+}
+
+.input-icon {
+    font-size: 2rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.new-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--text-dark);
+    padding: 0.75rem 0;
+    min-width: 0;
+}
+
+.new-input::placeholder {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.new-download-btn {
+    background: var(--gradient-accent);
+    border: none;
+    border-radius: 100px;
+    color: var(--text-dark);
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.new-download-btn:hover {
+    background: var(--accent-dark);
+    transform: scale(1.02);
+}
+
+.new-download-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ============================
+   NAVBAR
+   ============================ */
+.navbar {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 1030;
+}
+
+.navbar-brand .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--text-body);
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+/* ============================
+   SECTIONS
+   ============================ */
+.section-platforms {
+    background: var(--bg-light);
+}
+
+.section-how-to {
+    background: var(--bg-white);
+}
+
+.section-testimonials {
+    background: var(--bg-light);
+}
+
+.section-faq {
+    background: var(--bg-white);
+}
+
+/* ============================
+   CARDS
+   ============================ */
+.card {
+    border-radius: 16px;
+    border: 1px solid var(--gray-200);
+}
+
+.card:hover {
+    border-color: var(--primary-lighter);
+}
+
+/* ============================
+   FEATURE ICONS
+   ============================ */
+.feature-icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon-purple {
+    background: var(--gradient-primary);
+}
+
+.feature-icon-purple i {
+    color: var(--bg-white);
+}
+
+/* ============================
+   PLATFORM CARDS
+   ============================ */
+.platform-card .card-body {
+    text-align: center;
+}
+
+.platform-card i {
+    color: var(--primary);
+}
+
+/* ============================
+   STATS (inside Hero)
+   ============================ */
+.stat-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 209, 102, 0.15) 100%);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    color: var(--bg-white);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.stat-card i {
+    color: var(--bg-white);
+    opacity: 0.9;
+}
+
+/* ============================
+   STEPS / TIMELINE
+   ============================ */
+.step-badge {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-white);
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 0 auto;
+}
+
+/* ============================
+   TESTIMONIALS
+   ============================ */
+.testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-white);
+}
+
+/* ============================
+   FAQ ACCORDION
+   ============================ */
+.accordion-item {
+    border-radius: 12px !important;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+}
+
+.accordion-button {
+    padding: 1.25rem;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.accordion-button:not(.collapsed) {
+    background: var(--bg-lighter);
+    color: var(--primary-dark);
+}
+
+.accordion-button:focus {
+    border-color: var(--primary);
+}
+
+.accordion-body {
+    padding: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-body);
+}
+
+/* ============================
+   BADGES
+   ============================ */
+.badge {
+    border-radius: 16px;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+}
+
+.badge i {
+    font-size: 1.1rem;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+.footer {
+    background: var(--gradient-primary);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer a:hover {
+    color: var(--bg-white);
+}
+
+.footer h5 {
+    color: var(--bg-white);
+}
+
+/* ============================
+   FORMAT SELECTOR
+   ============================ */
+.format-selector-wrapper {
+    margin-top: 2rem;
+}
+
+.format-selector-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.video-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.video-title-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.format-options-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.format-tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+    padding-bottom: 0.5rem;
+}
+
+.format-tab {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.format-tab.active {
+    background: var(--bg-lighter);
+    color: var(--primary);
+}
+
+.format-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.format-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-white);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+}
+
+.format-type {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.format-quality {
+    color: var(--text-body);
+    font-size: 0.9rem;
+}
+
+.badge-hd {
+    display: inline-block;
+    background: var(--primary-lighter);
+    color: var(--primary-dark);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.25rem;
+}
+
+.btn-convert {
+    background: var(--gradient-accent);
+    color: var(--text-dark);
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.btn-convert:hover {
+    background: var(--accent-dark);
+}
+
+@media (max-width: 768px) {
+    .format-selector-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .video-info-box {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .video-thumbnail {
+        width: 120px;
+        height: 90px;
+    }
+
+    .format-item {
+        grid-template-columns: 60px 1fr auto;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .btn-convert {
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================
+   UTILITIES
+   ============================ */
+.text-primary-custom {
+    color: var(--primary);
+}
+
+.bg-primary-custom {
+    background: var(--primary);
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.bg-accent {
+    background: var(--accent);
+}
+
+/* Error Messages */
+.invalid-feedback {
+    background: rgba(220, 38, 38, 0.1);
+    border-left: 4px solid #dc2626;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #dc2626;
+    font-weight: 500;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 100vh;
+        padding-top: 2rem;
+    }
+
+    .feature-icon-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .new-search-wrapper {
+        padding: 8px;
+    }
+
+    .input-container {
+        padding: 6px 10px;
+        gap: 8px;
+    }
+
+    .input-icon {
+        font-size: 1.5rem;
+        margin-left: 4px;
+    }
+
+    .new-input {
+        font-size: 0.9rem;
+        padding: 0.625rem 0;
+    }
+
+    .new-input::placeholder {
+        font-size: 0.85rem;
+    }
+
+    .new-download-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .new-download-btn span {
+        display: none;
+    }
+
+    .new-download-btn i {
+        margin: 0;
+    }
+}
