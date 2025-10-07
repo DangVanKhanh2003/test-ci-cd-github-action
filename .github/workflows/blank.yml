@@ -10,11 +10,11 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  RSYNC_SRC: "."               # đổi thành "dist" nếu có build
+  RSYNC_SRC: "."
   REMOTE_USER: "deploy"
   REMOTE_HOST: ${{ secrets.SERVER_IP }}
   REMOTE_PORT: ${{ secrets.SERVER_SSH_PORT }}
-  REMOTE_PATH: "/var/www//test-deploy"
+  REMOTE_PATH: "/var/www/test-deploy"   # bỏ dấu // dư
 
 jobs:
   deploy:
@@ -25,23 +25,34 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup SSH
+        shell: bash
         run: |
-          set -e
+          # Kiểm tra secrets cơ bản (in ra thông báo rõ ràng nếu thiếu)
+          if [ -z "${{ secrets.SERVER_PRIVATE_KEY }}" ]; then echo "SERVER_PRIVATE_KEY is empty"; exit 1; fi
+          if [ -z "${REMOTE_HOST}" ]; then echo "REMOTE_HOST is empty"; exit 1; fi
+          if [ -z "${REMOTE_PORT}" ]; then echo "REMOTE_PORT is empty"; exit 1; fi
+
           mkdir -p "$HOME/.ssh"
           SSH_KEY_PATH="$HOME/.ssh/deploy_key"
           printf '%s\n' "${{ secrets.SERVER_PRIVATE_KEY }}" > "$SSH_KEY_PATH"
           chmod 600 "$SSH_KEY_PATH"
           ssh-keyscan -p "$REMOTE_PORT" -H "$REMOTE_HOST" >> "$HOME/.ssh/known_hosts"
 
+          # xuất biến để các step sau dùng được
+          echo "SSH_KEY_PATH=$SSH_KEY_PATH" >> "$GITHUB_ENV"
+
       - name: Ensure remote directory exists
+        shell: bash
         run: |
-          ssh -i $SSH_KEY_PATH -p "$REMOTE_PORT" "$REMOTE_USER@$REMOTE_HOST" "mkdir -p '$REMOTE_PATH'"
+          ssh -i "$SSH_KEY_PATH" -p "$REMOTE_PORT" "$REMOTE_USER@$REMOTE_HOST" \
+            "mkdir -p '$REMOTE_PATH'"
 
       - name: Rsync files to server
+        shell: bash
         run: |
           rsync -az --delete \
             --exclude ".git" \
             --exclude ".github" \
             --exclude "node_modules" \
-            -e "ssh -i $SSH_KEY_PATH -p $REMOTE_PORT" \
+            -e "ssh -i '$SSH_KEY_PATH' -p $REMOTE_PORT" \
             "$RSYNC_SRC"/ "$REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH"/
