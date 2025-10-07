@@ -14,7 +14,7 @@ env:
   REMOTE_USER: "deploy"
   REMOTE_HOST: ${{ secrets.SERVER_IP }}
   REMOTE_PORT: ${{ secrets.SERVER_SSH_PORT }}
-  REMOTE_PATH: "/var/www/my-site"
+  REMOTE_PATH: "/var/www//test-deploy"
   SSH_KEY_PATH: "~/.ssh/deploy_key"
 
 jobs:
