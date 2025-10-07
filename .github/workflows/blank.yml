@@ -15,7 +15,6 @@ env:
   REMOTE_HOST: ${{ secrets.SERVER_IP }}
   REMOTE_PORT: ${{ secrets.SERVER_SSH_PORT }}
   REMOTE_PATH: "/var/www//test-deploy"
-  SSH_KEY_PATH: "$HOME/.ssh/deploy_key"
 
 jobs:
   deploy:
@@ -27,10 +26,12 @@ jobs:
 
       - name: Setup SSH
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SERVER_PRIVATE_KEY }}" > $SSH_KEY_PATH
-          chmod 600 $SSH_KEY_PATH
-          ssh-keyscan -p "$REMOTE_PORT" -H "$REMOTE_HOST" >> ~/.ssh/known_hosts
+          set -e
+          mkdir -p "$HOME/.ssh"
+          SSH_KEY_PATH="$HOME/.ssh/deploy_key"
+          printf '%s\n' "${{ secrets.SERVER_PRIVATE_KEY }}" > "$SSH_KEY_PATH"
+          chmod 600 "$SSH_KEY_PATH"
+          ssh-keyscan -p "$REMOTE_PORT" -H "$REMOTE_HOST" >> "$HOME/.ssh/known_hosts"
 
       - name: Ensure remote directory exists
         run: |
